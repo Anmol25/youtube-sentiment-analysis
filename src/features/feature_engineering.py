@@ -113,7 +113,7 @@ def save_vectorizer(vectorizer: TfidfVectorizer) -> None:
     """
     try:
         # Create Path to store the vectorizer
-        vectorizer_path = os.path.join("models")
+        vectorizer_path = os.path.join("models", "vectorizer")
         if not os.path.exists(vectorizer_path):
             os.makedirs(vectorizer_path)
         # Make Path to Store the Vectorizer

@@ -19,4 +19,4 @@ stages:
       - data/processed
     outs:
       - data/interim
-      - models
+      - models/vectorizer
