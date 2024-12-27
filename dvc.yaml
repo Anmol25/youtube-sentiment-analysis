@@ -20,3 +20,10 @@ stages:
     outs:
       - data/interim
       - models/vectorizer
+  model_training:
+    cmd: python src/models/model_training.py
+    deps:
+      - src/models/model_training.py
+      - data/interim
+    outs:
+      - models/model

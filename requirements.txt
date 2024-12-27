@@ -6,3 +6,4 @@ nltk == 3.9.1
 scikit-learn == 1.6.0
 scipy == 1.14.1
 PyYAML == 6.0.2
+lightgbm == 4.5.0
