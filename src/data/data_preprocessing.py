@@ -100,7 +100,11 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
         df.dropna(inplace=True)
         # Preprocess the comments
         df['clean_comment'] = df['clean_comment'].apply(preprocess_comment)
+        # Remove rows with empty comments
         df = df[~(df['clean_comment'].str.strip() == '')]
+        # Remap Outputs
+        # 0 -> Negative, 1 -> Neutral, 2 -> Positive
+        df['category'] = df['category'].map({-1: 0, 0: 1, 1: 2})
         logger.debug("Preprocessed the data")
         return df
     except Exception as e:
