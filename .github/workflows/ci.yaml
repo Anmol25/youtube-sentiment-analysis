@@ -1,0 +1,45 @@
+name : CI Workflow
+
+on : push
+
+jobs:
+  data_ingestion:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12.3'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install dvc
+          pip install dvc-s3
+          pip install flake8
+
+      - name: Linting Check
+        run: |
+          flake8 src/
+      
+      - name: Configure DVC remote
+        env:
+          DAGSHUB_PAT: ${{ secrets.DAGSHUB_PAT }}
+          DAGSHUB_USERNAME: ${{ secrets.DAGSHUB_USERNAME }}
+          DAGSHUB_BUCKET: ${{ secrets.DAGSHUB_BUCKET }}
+          DAGSHUB_ACCESS_KEY_ID: ${{ secrets.DAGSHUB_ACCESS_KEY_ID }}
+          DAGSHUB_SECRET_ACCESS_KEY: ${{ secrets.DAGSHUB_SECRET_ACCESS_KEY }}
+        run: |
+          dagshub login --token $DAGSHUB_PAT
+          dvc remote modify origin endpointurl "https://dagshub.com/${DAGSHUB_USERNAME}/${DAGSHUB_BUCKET}.s3"
+          dvc remote modify origin --local access_key_id $DAGSHUB_ACCESS_KEY_ID
+          dvc remote modify origin --local secret_access_key $DAGSHUB_SECRET_ACCESS_KEY
+          dvc pull
+
+      - name: Run DVC Pipeline
+        run: | 
+          dvc repro
