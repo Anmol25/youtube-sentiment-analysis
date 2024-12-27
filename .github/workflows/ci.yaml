@@ -3,7 +3,7 @@ name : CI Workflow
 on : push
 
 jobs:
-  data_ingestion:
+  dvc_pipeline:
     runs-on: ubuntu-latest
 
     steps:
