@@ -1,6 +1,8 @@
+import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
+import scipy.sparse as sparse
 import logging
 import yaml
 import pickle
@@ -125,11 +127,11 @@ def save_vectorizer(vectorizer: TfidfVectorizer) -> None:
 
 def save_data(X_train, X_test, y_train, y_test) -> None:
     """
-    Save the dataframe to the given path
+    Save the sparse matrices and target variables in efficient formats
 
     Args:
-    X_train: Train Data
-    X_test: Test Data
+    X_train: Train Data (sparse matrix)
+    X_test: Test Data (sparse matrix)
     y_train: Train Target
     y_test: Test Target
     """
@@ -138,17 +140,16 @@ def save_data(X_train, X_test, y_train, y_test) -> None:
         data_path = os.path.join("data", "interim")
         if not os.path.exists(data_path):
             os.makedirs(data_path)
-        # Make Paths to Store the Data
-        X_train_path = os.path.join(data_path, "X_train.csv")
-        X_test_path = os.path.join(data_path, "X_test.csv")
-        y_train_path = os.path.join(data_path, "y_train.csv")
-        y_test_path = os.path.join(data_path, "y_test.csv")
-        # Save the Data
-        pd.DataFrame(X_train).to_csv(X_train_path, index=False)
-        pd.DataFrame(X_test).to_csv(X_test_path, index=False)
-        pd.DataFrame(y_train).to_csv(y_train_path, index=False)
-        pd.DataFrame(y_test).to_csv(y_test_path, index=False)
-        logger.debug("Saved the data to the given path")
+
+        # Save sparse matrices in npz format
+        sparse.save_npz(os.path.join(data_path, "X_train.npz"), X_train)
+        sparse.save_npz(os.path.join(data_path, "X_test.npz"), X_test)
+
+        # Save target variables as numpy arrays
+        np.save(os.path.join(data_path, "y_train.npy"), y_train)
+        np.save(os.path.join(data_path, "y_test.npy"), y_test)
+
+        logger.debug("Saved the data in sparse format")
     except Exception as e:
         logger.error(f"Error saving the data: {e}")
 
