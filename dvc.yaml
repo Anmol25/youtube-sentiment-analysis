@@ -12,3 +12,11 @@ stages:
       - data/raw
     outs:
       - data/processed
+  feature_engineering:
+    cmd: python src/features/feature_engineering.py
+    deps:
+      - src/features/feature_engineering.py
+      - data/processed
+    outs:
+      - data/interim
+      - models

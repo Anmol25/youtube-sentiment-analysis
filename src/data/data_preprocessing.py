@@ -141,5 +141,6 @@ if __name__ == "__main__":
 
         # Save the data
         save_data(df)
+        logger.debug("Data Preprocessing completed")
     except Exception as e:
         logger.error(f"Error processing the data: {e}")

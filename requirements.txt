@@ -3,4 +3,5 @@ python-dotenv == 1.0.1
 numpy == 1.26.4
 pandas == 2.2.3
 nltk == 3.9.1
-
+scikit-learn == 1.6.0
+PyYAML == 6.0.2
