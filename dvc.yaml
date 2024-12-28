@@ -27,3 +27,13 @@ stages:
       - data/interim
     outs:
       - models/model
+  model_evaluation:
+    cmd: python src/models/model_evaluation.py
+    deps:
+      - src/models/model_evaluation.py
+      - models/model
+      - models/vectorizer
+    outs:
+      - models/info
+    metrics:
+      - reports/metrics.json

@@ -1,6 +1,10 @@
 feature_engineering:
-  max_features: 9000
-  ngram_range: [1,1]
+  train_test_split:
+    test_size: 0.2
+    random_state: 42
+  vectorizer:
+    max_features: 9000
+    ngram_range: [1,1]
 
 model_training:
   LoR:
@@ -9,7 +13,6 @@ model_training:
     C: 4.525772411740373
     solver: lbfgs
     n_jobs: -1
-  
   LightGBM:
     max_depth: 4
     n_estimators: 980
@@ -21,6 +24,5 @@ model_training:
     n_jobs: -1
     objective: multiclass
     verbose: -1
-
   Meta:
     n_jobs: -1

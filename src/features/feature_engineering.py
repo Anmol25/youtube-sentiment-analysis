@@ -73,7 +73,8 @@ def load_data(path: str) -> pd.DataFrame:
 
 
 def vectorize(df: pd.DataFrame, max_features: int,
-              ngram_range: tuple) -> tuple:
+              ngram_range: tuple, test_size: float,
+              random_state: int) -> tuple:
     """
     Vectorize the comments using TF-IDF and
     split the data into train and test sets
@@ -82,6 +83,8 @@ def vectorize(df: pd.DataFrame, max_features: int,
     df: The dataframe
     max_features: The maximum number of features
     ngram_range: The ngram range
+    test_size: Test size for train test split
+    random_state: Random state for train test spit
 
     Returns:
     X_train, X_test, y_train, y_test: The train and test splits
@@ -89,8 +92,8 @@ def vectorize(df: pd.DataFrame, max_features: int,
     try:
         # Split the data into train and test sets
         X_train, X_test, y_train, y_test = train_test_split(
-            df['clean_comment'], df['category'], test_size=0.2,
-            random_state=42, stratify=df['category'])
+            df['clean_comment'], df['category'], test_size=test_size,
+            random_state=random_state, stratify=df['category'])
 
         # Vectorize the comments using TF-IDF
         vectorizer = TfidfVectorizer(
@@ -158,14 +161,17 @@ if __name__ == "__main__":
     try:
         # Load the parameters
         params = load_params("params.yaml")
-        max_features = params["feature_engineering"]["max_features"]
-        ngram_range = tuple(params["feature_engineering"]["ngram_range"])
+        max_features = params["feature_engineering"]["vectorizer"]["max_features"]
+        ngram_range = tuple(params["feature_engineering"]
+                            ["vectorizer"]["ngram_range"])
+        test_size = params["feature_engineering"]["train_test_split"]["test_size"]
+        random_state = params["feature_engineering"]["train_test_split"]["random_state"]
 
         # Load the data
         df = load_data("data/processed/sentiments_processed.csv")
         # Split data and Vectorize
         X_train, X_test, y_train, y_test, vectorizer = vectorize(
-            df, max_features, ngram_range)
+            df, max_features, ngram_range, test_size, random_state)
 
         # Save the Vectorizer
         save_vectorizer(vectorizer)
