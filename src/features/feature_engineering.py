@@ -161,11 +161,14 @@ if __name__ == "__main__":
     try:
         # Load the parameters
         params = load_params("params.yaml")
-        max_features = params["feature_engineering"]["vectorizer"]["max_features"]
+        max_features = (params["feature_engineering"]
+                        ["vectorizer"]["max_features"])
         ngram_range = tuple(params["feature_engineering"]
                             ["vectorizer"]["ngram_range"])
-        test_size = params["feature_engineering"]["train_test_split"]["test_size"]
-        random_state = params["feature_engineering"]["train_test_split"]["random_state"]
+        test_size = (params["feature_engineering"]
+                     ["train_test_split"]["test_size"])
+        random_state = (params["feature_engineering"]
+                        ["train_test_split"]["random_state"])
 
         # Load the data
         df = load_data("data/processed/sentiments_processed.csv")

@@ -1,7 +1,8 @@
 import numpy as np
 import pandas as pd
 import scipy.sparse as sparse
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 import seaborn as sns
 import dagshub
@@ -56,7 +57,7 @@ def mlflow_init():
         logger.debug("Succesfully initialized mlfow tracking server")
     except Exception as e:
         logger.error(
-            f"Error: Error occured in initializing mlflow tracking server: {e}")
+            f"Error occured in initializing mlflow tracking server: {e}")
 
 
 def load_params(path: str) -> dict:
@@ -255,7 +256,7 @@ def log_cm(cm: dict):
         sns.heatmap(cm, annot=True, fmt="d", cmap="Blues")
         plt.xlabel("Predicted")
         plt.ylabel("Actual")
-        plt.title(f"Confusion Matrix: Stacking Classifier")
+        plt.title("Confusion Matrix: Stacking Classifier")
         plt.savefig("reports/figures/confusion_matrix.png")
         mlflow.log_artifact("reports/figures/confusion_matrix.png")
         plt.close()
@@ -305,7 +306,10 @@ if __name__ == "__main__":
             # Log model
             model_path = "Stacked_Model"
             mlflow.sklearn.log_model(
-                model, model_path, input_example=input_example, signature=signature)
+                model,
+                model_path,
+                input_example=input_example,
+                signature=signature)
             save_model_info(run.info.run_id, model_path)
             mlflow.end_run()
 
