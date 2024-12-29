@@ -37,3 +37,8 @@ stages:
       - models/info
     metrics:
       - reports/metrics.json
+  model_registry:
+    cmd: python src/models/model_registry.py
+    deps:
+    - models/info/experiment_info.json
+    - src/models/model_registry.py
