@@ -8,6 +8,9 @@ from nltk.stem import WordNetLemmatizer
 from fastapi import FastAPI
 from pydantic import BaseModel
 
+import warnings
+warnings.simplefilter("ignore")
+
 app = FastAPI()
 
 
@@ -134,15 +137,20 @@ def read_root():
 
 
 class Comment(BaseModel):
-    comment: str
-
-
-class Sentiment(BaseModel):
-    sentiment: str
-    confidence: float
+    comments: list
 
 
 @app.post('/predict')
 def predict_req(Comment: Comment):
-    sentiment, confidence = predict(Comment.comment)
-    return {"sentiment": sentiment, "confidence": confidence}
+    comments = Comment.comments
+    if not comments:
+        return {"error": "No comments provided"}
+    predictions = [predict(comment) for comment in comments]
+    sentiments, confidence = zip(*predictions)
+
+    response = [{"comment": comment, "sentiment": sentiment,
+                 "confidence": confidence}
+                for comment, sentiment, confidence in
+                zip(comments, sentiments, confidence)]
+
+    return response
