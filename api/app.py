@@ -259,7 +259,6 @@ class SentimentDataRequest(BaseModel):
 def generate_trend_graph(request: SentimentDataRequest):
     try:
         sentiment_data = request.sentiment_data
-        print(sentiment_data)
         if not sentiment_data:
             return {"error": "No sentiment data provided"}
 
