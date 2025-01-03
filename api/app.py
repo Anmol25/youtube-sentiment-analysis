@@ -7,11 +7,22 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 
 import warnings
 warnings.simplefilter("ignore")
 
 app = FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    # Allows all origins, or specify domains like ["http://example.com"]
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods (GET, POST, OPTIONS, etc.)
+    allow_headers=["*"],  # Allows all headers
+)
 
 
 def mlflow_init():
