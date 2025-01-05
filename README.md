@@ -5,20 +5,12 @@ A tool for real-time sentiment analysis of YouTube comments, capable of predicti
 
 # Chrome Plugin Demo
 
-### YouTube Comment Summary
-![YT Comment Summary](https://github.com/user-attachments/assets/6590e48e-411e-449b-bb59-74fd23323dd9)
+<img src="https://github.com/user-attachments/assets/6590e48e-411e-449b-bb59-74fd23323dd9" alt="YT Comment Analyzer" width="300" height="200" />
+<img src="https://github.com/user-attachments/assets/693a48e8-d5a5-4db6-b884-2194daa90c6a" alt="YT Comment Analyzer" width="300" height="200" />
+<img src="https://github.com/user-attachments/assets/8c4ff452-400d-43cc-ac34-01861b53fdc4" alt="YT Comment Analyzer" width="300" height="200" />
+<img src="https://github.com/user-attachments/assets/111d8d8d-a81a-4650-a1da-d66e3236bba4" alt="YT Comment Analyzer" width="300" height="200" />
+<img src="https://github.com/user-attachments/assets/49cd9b15-3ffb-488f-920e-107b55f927f0" alt="YT Comment Analyzer" width="300" height="200" />
 
-### Sentiment Pie Chart
-![Sentiment Pie Chart](https://github.com/user-attachments/assets/693a48e8-d5a5-4db6-b884-2194daa90c6a)
-
-### Monthly Sentiment Over Time
-![Monthly Sentiment Over Time](https://github.com/user-attachments/assets/8c4ff452-400d-43cc-ac34-01861b53fdc4)
-
-### WordCloud
-![WordCloud](https://github.com/user-attachments/assets/111d8d8d-a81a-4650-a1da-d66e3236bba4)
-
-### Top 25 comments
-![Top25](https://github.com/user-attachments/assets/49cd9b15-3ffb-488f-920e-107b55f927f0)
 
 Project Organization
 ------------
