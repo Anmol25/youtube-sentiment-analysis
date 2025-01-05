@@ -1,11 +1,13 @@
-youtube-sentiment-analysis
-==============================
 
-A ML Project to do sentiment analysis on Youtube Comments
+# Youtube Comment Sentiment Analyzer
+
+A tool for real-time sentiment analysis of YouTube comments, capable of predicting positive, neutral, and negative sentiments. This project features a Chrome plugin for seamless integration, a high-accuracy machine learning model, and a FastAPI backend deployed on AWS. With interactive visualizations and robust MLOps practices, it delivers a reliable and scalable solution for understanding comment sentiment.
+
 
 Project Organization
 ------------
-
+    ├── api                <- FastApi For model inference
+    ├── chrome-plugin      <- Frontend of Chrome plugin 
     ├── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
     ├── README.md          <- The top-level README for developers using this project.
@@ -36,15 +38,17 @@ Project Organization
     │   ├── __init__.py    <- Makes src a Python module
     │   │
     │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
+    │   │   ├──  data_ingestion.py
+    │   │   └──  data_preprocessing.py
     │   │
     │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
+    │   │   └── feature_engineering.py
     │   │
     │   ├── models         <- Scripts to train models and then use trained models to make
     │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
+    │   │   ├── model_training.py
+    │   │   ├── model_evaluation.py
+    │   │   └── model_registry.py
     │   │
     │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
     │       └── visualize.py
@@ -54,4 +58,7 @@ Project Organization
 
 --------
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+## Authors
+
+- [@Anmol25](https://www.github.com/Anmol25)
+
