@@ -5,11 +5,11 @@ A tool for real-time sentiment analysis of YouTube comments, capable of predicti
 
 # Chrome Plugin Demo
 
-<img src="https://github.com/user-attachments/assets/6590e48e-411e-449b-bb59-74fd23323dd9" alt="YT Comment Analyzer" width="300" height="200" />
-<img src="https://github.com/user-attachments/assets/693a48e8-d5a5-4db6-b884-2194daa90c6a" alt="YT Comment Analyzer" width="300" height="200" />
-<img src="https://github.com/user-attachments/assets/8c4ff452-400d-43cc-ac34-01861b53fdc4" alt="YT Comment Analyzer" width="300" height="200" />
-<img src="https://github.com/user-attachments/assets/111d8d8d-a81a-4650-a1da-d66e3236bba4" alt="YT Comment Analyzer" width="300" height="200" />
-<img src="https://github.com/user-attachments/assets/49cd9b15-3ffb-488f-920e-107b55f927f0" alt="YT Comment Analyzer" width="300" height="200" />
+<img src="https://github.com/user-attachments/assets/6590e48e-411e-449b-bb59-74fd23323dd9" alt="YT Comment Analyzer" width="370" height="250" />
+<img src="https://github.com/user-attachments/assets/693a48e8-d5a5-4db6-b884-2194daa90c6a" alt="YT Comment Analyzer" width="370" height="250" />
+<img src="https://github.com/user-attachments/assets/8c4ff452-400d-43cc-ac34-01861b53fdc4" alt="YT Comment Analyzer" width="370" height="250" />
+<img src="https://github.com/user-attachments/assets/111d8d8d-a81a-4650-a1da-d66e3236bba4" alt="YT Comment Analyzer" width="370" height="250" />
+<img src="https://github.com/user-attachments/assets/49cd9b15-3ffb-488f-920e-107b55f927f0" alt="YT Comment Analyzer" width="370" height="250" />
 
 
 Project Organization
